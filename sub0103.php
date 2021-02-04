@@ -1,6 +1,6 @@
 <?php
     session_start();
-    
+    $state="compnay";
 ?>
 <html lang="ko">
 
@@ -33,7 +33,13 @@
     var base = $(".menu")
 
     $(document).ready(
+
         function() {
+            var now = $(".sub-back[name=company");
+            now.css("display", "block");
+            if ($(window).width() > 900) {
+                now.css("display", "block")
+            }
             $(".menu-item").hover(
                 function() {
                     if ($(window).width() > 900) {
@@ -42,7 +48,8 @@
                 },
                 function() {
                     if ($(window).width() > 900) {
-                        $(".sub-back").css("display", "none");
+                        var list = $(".sub-back").not("div[value=company]").css("display", "none");
+                        now.css("display", "block");
                     }
                 })
             setInterval(function() {
@@ -85,16 +92,23 @@
     <div class="wrapper">
         <div class="header">
             <?php
-                    require_once("./component/header.php");
+                $state;
+                require_once("./component/header.php");
                 ?>
         </div>
-        <?php
-                    require_once("./component/content.php");
-                ?>
-        <?php
+        <div class="sub-content">
+            <?php
+                $title="비전";
+                $description="우리의 건강한 먹거리를 위해 힘쓰겠습니다.";
+                require("./component/subheader.php")
+            ?>
+            <div class="sub-content-content">
+                <img class="sub_0103" src="./css/images/sub0102_img01.png" alt="3323">
+            </div>
+            <?php
                         require("./component/footer.php");
                     ?>
-
+        </div>
     </div>
 </body>
 
